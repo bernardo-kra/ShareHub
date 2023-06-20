@@ -8,16 +8,16 @@
 <body>
     <h2>Login</h2>
 
-    <form method="POST" action="/login">
+    <form method="POST" action="{{ route('postLogin') }}">
         @csrf
 
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="password">Senha</label>
+        <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Entrar</button>
+        <button type="submit">Login</button>
     </form>
 </body>
 
