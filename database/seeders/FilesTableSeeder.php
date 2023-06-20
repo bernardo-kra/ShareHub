@@ -14,7 +14,7 @@ class FilesTableSeeder extends Seeder
     {
         $user = User::first();
 
-        $filePaths = ['upload/to/file1', 'upload/to/file2', 'upload/to/file3'];
+        $filePaths = ['upload/to/file1.txt', 'upload/to/file2.pdf', 'upload/to/file3.pdf'];
 
         foreach ($filePaths as $filePath) {
             DB::table('files')->insert([
