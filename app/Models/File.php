@@ -18,6 +18,16 @@ class File extends Model
     public function user() 
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function sharedUsers()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'shared_files',
+            'file_id',
+            'user_id'
+        );
         
     }
 }

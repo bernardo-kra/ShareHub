@@ -11,18 +11,22 @@ class SharedFilesTableSeeder extends Seeder
 {
     public function run()
     {
-        $user = User::first();
-        $recipient = User::find(2);
-        $file = File::first();
+        $users = User::all();
+        $files = File::all();
 
-        $sharedFilesCount = 5;
-
-        for ($i = 0; $i < $sharedFilesCount; $i++) {
-            DB::table('shared_files')->insert([
-                'user_id' => $user->id,
-                'recipient_id' => $recipient->id,
-                'file_id' => $file->id,
-            ]);
+        foreach ($users as $user) {
+            foreach ($files as $file) {
+                if ($user->id !== $file->user_id) {
+                    DB::table('shared_files')->insert([
+                        'user_id' => $file->user_id,
+                        'recipient_id' => $user->id,
+                        'file_id' => $file->id,
+                        'can_view' => rand(0, 1),
+                        'can_edit' => rand(0, 1),
+                        'can_delete' => rand(0, 1),
+                    ]);
+                }
+            }
         }
     }
 }

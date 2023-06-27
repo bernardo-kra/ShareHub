@@ -10,6 +10,7 @@
     <title>Signin Template · Bootstrap v5.1</title>
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! url('assets/css/signin.css') !!}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -27,8 +28,6 @@
         }
     </style>
 
-
-    <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
 

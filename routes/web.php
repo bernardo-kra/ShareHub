@@ -36,9 +36,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/file/{file}/download', [FileController::class, 'download'])->name('file.download');
     Route::post('/upload', [FileController::class, 'upload'])->name('file.upload');
     Route::post('/share/{file}', [FileController::class, 'share'])->name('file.share');
-
-    Route::get('/file/{file}/download', [FileController::class, 'download'])->name('file.download');
+    Route::post('/revoke/{file}', [FileController::class, 'revokeShare'])->name('file.revoke');
     Route::post('/file/{file}/replace', [FileController::class, 'replace'])->name('file.replace');
     Route::get('/search', [FileController::class, 'search'])->name('file.search');
-
+    Route::post('/create-text-file', [FileController::class, 'createTextFile'])->name('file.createTextFile');
+    Route::get('/file/{file}/edit', [FileController::class, 'edit'])->name('file.edit');
+    Route::post('/file/{file}/edit', [FileController::class, 'update'])->name('file.update');
+    Route::delete('/file/{file}/delete', [FileController::class, 'destroy'])->name('file.delete');
 });

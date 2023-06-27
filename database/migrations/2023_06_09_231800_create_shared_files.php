@@ -13,6 +13,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('recipient_id')->constrained('users'); 
             $table->foreignId('file_id')->constrained(); 
+            $table->boolean('can_view')->default(false);
+            $table->boolean('can_edit')->default(false);
+            $table->boolean('can_delete')->default(false);
         });
     }
 

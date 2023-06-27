@@ -9,6 +9,7 @@
     <title>Sharing</title>
 
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {

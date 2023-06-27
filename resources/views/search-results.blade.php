@@ -8,11 +8,11 @@
         @if ($userFiles->isEmpty())
             <p>No files found.</p>
         @else
-            <ul>
+            <ul class="list-group">
                 @foreach ($userFiles as $file)
-                    <li>
-                        {{ $file->file_path }}
-                        <a href="{{ route('file.download', ['file' => $file->id]) }}">Download</a>
+                    <li class="list-group-item">
+                        <span class="file-path">{{ $file->file_path }}</span>
+                        <a href="{{ route('file.download', ['file' => $file->id]) }}" class="btn btn-primary">Download</a>
                     </li>
                 @endforeach
             </ul>
@@ -22,12 +22,12 @@
         @if ($sharedFiles->isEmpty())
             <p>No shared files found.</p>
         @else
-            <ul>
+            <ul class="list-group">
                 @foreach ($sharedFiles as $file)
-                    <li>
-                        {{ $file->file_path }}
-                        <p>Shared by: {{ $file->username }}</p>
-                        <a href="{{ route('file.download', ['file' => $file->id]) }}">Download</a>
+                    <li class="list-group-item">
+                        <span class="file-path">{{ $file->file_path }}</span>
+                        <p class="shared-by">Shared by: {{ $file->username }}</p>
+                        <a href="{{ route('file.download', ['file' => $file->id]) }}" class="btn btn-primary">Download</a>
                     </li>
                 @endforeach
             </ul>
