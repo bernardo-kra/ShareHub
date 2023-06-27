@@ -26,7 +26,7 @@
                 @foreach ($sharedFiles as $file)
                     <li class="list-group-item">
                         <span class="file-path">{{ $file->file_path }}</span>
-                        <p class="shared-by">Shared by: {{ $file->username }}</p>
+                        <p class="shared-by">Shared by: {{ $file->shared_by }}</p>
                         <a href="{{ route('file.download', ['file' => $file->id]) }}" class="btn btn-primary">Download</a>
                     </li>
                 @endforeach

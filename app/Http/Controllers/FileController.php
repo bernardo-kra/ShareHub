@@ -148,29 +148,30 @@ class FileController extends Controller
     }
 
     public function search(Request $request)
-    {
-        $query = $request->input('search');
+{
+    $query = $request->input('search');
 
-        $userFiles = File::where('user_id', Auth::id())
-            ->where('file_path', 'LIKE', "%{$query}%")
-            ->get();
+    $userFiles = File::where('user_id', Auth::id())
+        ->where('file_path', 'LIKE', "%{$query}%")
+        ->get();
 
-        $sharedFiles = DB::table('shared_files')
-            ->where('shared_files.recipient_id', Auth::id())
-            ->join('files', function ($join) use ($query) {
-                $join->on('files.id', '=', 'shared_files.file_id')
-                    ->where('files.file_path', 'LIKE', "%{$query}%");
-            })
-            ->join('users', 'users.id', '=', 'shared_files.user_id')
-            ->select('files.*', 'users.username as username')
-            ->get();
+    $sharedFiles = DB::table('shared_files')
+        ->where('shared_files.recipient_id', Auth::id())
+        ->join('files', function ($join) use ($query) {
+            $join->on('files.id', '=', 'shared_files.file_id')
+                ->where('files.file_path', 'LIKE', "%{$query}%");
+        })
+        ->join('users', 'users.id', '=', 'shared_files.user_id')
+        ->select('files.*', 'users.username as shared_by')
+        ->get();
 
-        return view('search-results', [
-            'userFiles' => $userFiles,
-            'sharedFiles' => $sharedFiles,
-            'query' => $query,
-        ]);
-    }
+    return view('search-results', [
+        'userFiles' => $userFiles,
+        'sharedFiles' => $sharedFiles,
+        'query' => $query,
+    ]);
+}
+
     public function edit(File $file)
     {
         $user_id = Auth::id();
